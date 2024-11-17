@@ -30,13 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Start BE
-      run: npm run server &
+      run: npm server 
   startFE:
     needs: startBE
     runs-on: ubuntu-latest
     steps:
     - name: Start FE
-      run: npm run start &
+      run: npm start 
   startTests:
     needs: startFE
     runs-on: ubuntu-latest
