@@ -30,6 +30,7 @@ jobs:
       with:
         name: library-build
         path: ./
+    - run: ls -la
 
   startBE:
     needs: build
