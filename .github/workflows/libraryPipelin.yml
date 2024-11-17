@@ -29,6 +29,8 @@ jobs:
       run: npm run server &
     - name: Start FE
       run: npm run start &
+    - name: Download new browsers
+      run: npx playwright install
     - name: Start Tests
       run: npm run test
     
