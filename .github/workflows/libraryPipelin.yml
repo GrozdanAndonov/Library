@@ -25,43 +25,10 @@ jobs:
         cache: 'npm'
     - name: Build project
       run: npm install 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: library-build
-        path: ./
-    - run: ls -la
-
-  startBE:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: library-build
     - name: Start BE
       run: npm run server &
-
-  startFE:
-    needs: startBE
-    runs-on: ubuntu-latest
-    steps:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: library-build  
     - name: Start FE
       run: npm run start &
-
-  startTests:
-    needs: startFE
-    runs-on: ubuntu-latest
-    steps:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: library-build
-    - name: Start tests
-      run: npm run test &
+    - name: Start Tests
+      run: npm run test
     
