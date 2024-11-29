@@ -1,5 +1,5 @@
 import * as api from '../src/api/api';
-const HOST = api.settings.hostBEFE;
+const HOST = "http://localhost:3000";//api.settings.hostFE;
 
 const { test, expect } = require('@playwright/test');
 
