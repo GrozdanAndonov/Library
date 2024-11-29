@@ -33,4 +33,14 @@ jobs:
       run: npx playwright install
     - name: Start Tests
       run: npm run test
+  deploy:
+    needs: build 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@747373cdb7b9b3f561438e063ee0815b71584f1b
+        with:
+          service-id: ${{ secrets.LIBRARY_ID }}
+          api-key: ${{ secrets.LIBRARY_API_KEY }}
+          wait-for-success: true
     
