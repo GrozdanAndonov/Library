@@ -1,11 +1,7 @@
 import { render } from '../node_modules/lit-html/lit-html.js';
 import page from '../node_modules/page/page.mjs';
 
-
 import { logout as apiLogout } from './api/api.js';
-
-
-
 
 import { loginPage } from './views/login.js';
 import { registerPage } from './views/register.js';
