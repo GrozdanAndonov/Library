@@ -1,6 +1,6 @@
 import * as api from './api.js';
 
-const host = api.settings.hostBEBE;
+const host = api.settings.hostBE;
 
 export const login = api.login;
 export const register = api.register;
