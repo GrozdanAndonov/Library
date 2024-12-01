@@ -1,5 +1,4 @@
-import * as api from '../src/api/api';
-const HOST = "http://localhost:3000";//api.settings.hostFE;
+const HOST = "http://localhost:3000";
 
 const { test, expect } = require('@playwright/test');
 
@@ -35,6 +34,8 @@ test('Verify "All Books" link is visible after user login', async ({ page }) => 
   await page.fill('input[name="password"]', '123456');
   await page.click('input[type="submit"]');
 
+  // await page.waitForURL(HOST + "/catalog");
+
   const allBooksLink = await page.$('a[href="/catalog"]');
   const isAllBooksLinkVisible = await allBooksLink.isVisible();
 
@@ -48,6 +49,8 @@ test('Login with valid credentials', async ({ page }) => {
   await page.fill('input[name="password"]', '123456');
 
   await page.click('input[type="submit"]');
+
+  await page.waitForURL(HOST + '/catalog');
 
   await page.$('a[href="/catalog"]');
   expect(page.url()).toBe(HOST + '/catalog');
@@ -173,9 +176,13 @@ test('Verify visibility of Logout button after user login', async ({ page }) => 
   await page.fill('input[name="password"]', '123456');
   await page.click('input[type="submit"]');
 
+  await page.waitForURL(HOST + '/catalog');
+
   const logoutLink = await page.$('a[href="javascript:void(0)"]');
 
   const isLogoutLinkVisible = await logoutLink.isVisible();
+
+  
 
   expect(isLogoutLinkVisible).toBe(true);
 });
